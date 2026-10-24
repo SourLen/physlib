@@ -17,46 +17,49 @@ amplitude and is given by the complete elliptic integral 4√(ℓ/g) K(sin²(θ�
 
 The configuration space of the simple pendulum, one of the pendulum configuration spaces {1}, is the
 angle of the rod from the downward vertical modulo a full turn, homeomorphic to the circle. [1] That
-configuration space is a manifold. [2] The angular lift from the real line to the configuration
-space is periodic with period 2π, and two angles give the same configuration exactly when they
-differ by a whole number of turns. [3] The configuration space maps into physical space {2}, sending
-an angle θ to the position (ℓ sin θ, −ℓ cos θ) of the bob, which lies at distance ℓ from the pivot.
-[4] A trajectory is a time-parametrized curve in the configuration space. A real-valued angular lift
-determines such a trajectory, and two lifts describe the same trajectory precisely when their angles
-differ by an integer number of full turns at each time. Continuous and smooth lifts give rise to
-continuous and smooth trajectories, respectively. The physical position of the bob along a trajectory
-remains at distance |ℓ| from the pivot. [5]
+configuration space is a manifold. [2] Each real angle determines a configuration, with angles
+that differ by an integer multiple of 2π representing the same configuration. The map from real
+angles to configurations is therefore periodic with period 2π. [3] The configuration space maps
+into physical space {2}, sending an angle θ to the position (ℓ sin θ, −ℓ cos θ) of the bob, which
+lies at distance ℓ from the pivot. [4]
+
+A trajectory is a time-parametrized curve in the configuration space. An angular lift of a given
+trajectory is a real-valued function θ(t) whose value modulo 2π gives the configuration
+at each time. Two angular lifts describe the same trajectory precisely when their angles differ
+by an integer multiple of 2π at each time. [5] Continuous and smooth angular lifts give rise to
+continuous and smooth trajectories, respectively. [6] Mapping a trajectory to physical space
+gives the position of the bob, which remains at distance |ℓ| from the pivot. [7]
 
 ### Dynamics
 
 The Lagrangian of the simple pendulum is the kinetic energy ½ m ℓ² θ̇² minus the gravitational
 potential energy {3}. Its equation of motion m ℓ² θ̈ = −m g ℓ sin θ equates the rate of change of
 angular momentum with the gravitational torque, and is equivalent to the scalar form θ̈ + (g/ℓ) sin
-θ = 0. [6] The equation of motion holds exactly when the variational gradient of the action
-vanishes, and energy is conserved along solutions. [7] The Hamiltonian formulation {4} is
-equivalent: the Newtonian, scalar, Hamiltonian and variational formulations agree. [8]
+θ = 0. [8] The equation of motion holds exactly when the variational gradient of the action
+vanishes, and energy is conserved along solutions. [9] The Hamiltonian formulation {4} is
+equivalent: the Newtonian, scalar, Hamiltonian and variational formulations agree. [10]
 
 The hanging and the inverted positions are equilibria and solve the equation of motion. The
 separatrix energy 2 m g ℓ divides the motions: below it the pendulum never reaches the inverted
-position, and above it the angular velocity never vanishes. [9] Shifting the angle by a whole number
-of turns leaves the lifted dynamics unchanged. [10] The solution with a given initial angle and
+position, and above it the angular velocity never vanishes. [11] Shifting the angle by a whole number
+of turns leaves the lifted dynamics unchanged. [12] The solution with a given initial angle and
 angular velocity is unique, the solutions are symmetric under time reversal, and a pendulum released
-from rest swings symmetrically in time. [11] For any initial angle and angular velocity there is a
+from rest swings symmetrically in time. [13] For any initial angle and angular velocity there is a
 curve with that initial data which satisfies the equation of motion within ε of the initial instant.
-[12]
+[14]
 
 ### Small oscillations and the period
 
 In the small-angle limit {5} the pendulum is a harmonic oscillator of mass m ℓ² and spring constant
 m g ℓ: the linearized equation of motion is the oscillator's, its motions exist and are unique, and
-the period is 2π√(ℓ/g). [13] The full and the linearized dynamics are related by the cubic bound
+the period is 2π√(ℓ/g). [15] The full and the linearized dynamics are related by the cubic bound
 m g ℓ |θ|³/6 on the error in the torque, and the difference of the variational gradients of the two
-actions is the difference of the torque and the linearized force. [14]
+actions is the difference of the torque and the linearized force. [16]
 
 The period of a libration of amplitude θ₀ is 4√(ℓ/g) K(sin²(θ₀/2)) {6}. This formula equals
 2π√(ℓ/g) at zero amplitude, tends to the small-angle period as the amplitude goes to zero, increases
 with the amplitude on [0, π), and is bounded below by the small-angle period and above by the
-small-angle period divided by cos(θ₀/2). [15] It is the period of the solution released from rest
+small-angle period divided by cos(θ₀/2). [17] It is the period of the solution released from rest
 at amplitude θ₀, for amplitudes strictly between zero and the inverted position. [TODO]
 
 ## Lean References
@@ -73,34 +76,36 @@ at amplitude θ₀, for amplitudes strictly between zero and the inverted positi
    `SimplePendulum.ConfigurationSpace.toSpace_norm`
 5. Physlib/ClassicalMechanics/Pendulum/SimplePendulum/Geometric/Trajectory.lean —
    `SimplePendulum.Trajectory`, `SimplePendulum.Trajectory.ofLift`,
-   `SimplePendulum.Trajectory.ofLift_eq_iff`,
+   `SimplePendulum.Trajectory.ofLift_eq_iff`
+6. Physlib/ClassicalMechanics/Pendulum/SimplePendulum/Geometric/Trajectory.lean —
    `SimplePendulum.Trajectory.continuous_ofLift`,
-   `SimplePendulum.Trajectory.contMDiff_ofLift`,
+   `SimplePendulum.Trajectory.contMDiff_ofLift`
+7. Physlib/ClassicalMechanics/Pendulum/SimplePendulum/Geometric/Trajectory.lean —
    `SimplePendulum.Trajectory.toSpace`, `SimplePendulum.Trajectory.norm_toSpace`
-6. Physlib/ClassicalMechanics/Pendulum/SimplePendulum/Basic.lean — `SimplePendulum.lagrangian`,
+8. Physlib/ClassicalMechanics/Pendulum/SimplePendulum/Basic.lean — `SimplePendulum.lagrangian`,
    `SimplePendulum.torque`, `SimplePendulum.EquationOfMotion`,
    `SimplePendulum.equationOfMotion_iff_scalar`
-7. Physlib/ClassicalMechanics/Pendulum/SimplePendulum/Basic.lean — `SimplePendulum.equationOfMotion_iff_gradLagrangian_zero`,
+9. Physlib/ClassicalMechanics/Pendulum/SimplePendulum/Basic.lean — `SimplePendulum.equationOfMotion_iff_gradLagrangian_zero`,
    `SimplePendulum.energy_conservation_of_equationOfMotion`
-8. Physlib/ClassicalMechanics/Pendulum/SimplePendulum/Hamiltonian.lean — `SimplePendulum.hamiltonian`,
+10. Physlib/ClassicalMechanics/Pendulum/SimplePendulum/Hamiltonian.lean — `SimplePendulum.hamiltonian`,
    `SimplePendulum.hamiltonEqOp`, `SimplePendulum.equationOfMotion_tfae`
-9. Physlib/ClassicalMechanics/Pendulum/SimplePendulum/Equilibria.lean — `SimplePendulum.equationOfMotion_const_zero`,
+11. Physlib/ClassicalMechanics/Pendulum/SimplePendulum/Equilibria.lean — `SimplePendulum.equationOfMotion_const_zero`,
    `SimplePendulum.equationOfMotion_const_pi`, `SimplePendulum.isSolution_const_zero`,
    `SimplePendulum.isSolution_const_pi`, `SimplePendulum.separatrixEnergy`,
    `SimplePendulum.neg_one_lt_cos_of_energy_lt`, `SimplePendulum.deriv_ne_zero_of_energy_gt`
-10. Physlib/ClassicalMechanics/Pendulum/SimplePendulum/LiftInvariance.lean — `SimplePendulum.equationOfMotion_add_int_mul_two_pi`,
+12. Physlib/ClassicalMechanics/Pendulum/SimplePendulum/LiftInvariance.lean — `SimplePendulum.equationOfMotion_add_int_mul_two_pi`,
    `SimplePendulum.energy_add_int_mul_two_pi`, `SimplePendulum.isSolution_add_int_mul_two_pi`
-11. Physlib/ClassicalMechanics/Pendulum/SimplePendulum/Solution.lean — `SimplePendulum.phaseVectorField`,
+13. Physlib/ClassicalMechanics/Pendulum/SimplePendulum/Solution.lean — `SimplePendulum.phaseVectorField`,
    `SimplePendulum.equationOfMotion_unique`, `SimplePendulum.IsSolution.eq_of_initial`,
    `SimplePendulum.isSolution_comp_neg`, `SimplePendulum.releasedFromRest_even`
-12. Physlib/ClassicalMechanics/Pendulum/SimplePendulum/Solution.lean — `SimplePendulum.exists_local_solution`
-13. Physlib/ClassicalMechanics/Pendulum/SimplePendulum/SmallAngle.lean — `SimplePendulum.toHarmonicOscillator`,
+14. Physlib/ClassicalMechanics/Pendulum/SimplePendulum/Solution.lean — `SimplePendulum.exists_local_solution`
+15. Physlib/ClassicalMechanics/Pendulum/SimplePendulum/SmallAngle.lean — `SimplePendulum.toHarmonicOscillator`,
    `SimplePendulum.linearizedEquationOfMotion_iff`,
    `SimplePendulum.smallAngleTrajectory_linearizedEquationOfMotion`,
    `SimplePendulum.linearized_unique`, `SimplePendulum.smallAnglePeriod_eq`
-14. Physlib/ClassicalMechanics/Pendulum/SimplePendulum/SmallAngle.lean — `SimplePendulum.abs_torque_add_linear_le`,
+16. Physlib/ClassicalMechanics/Pendulum/SimplePendulum/SmallAngle.lean — `SimplePendulum.abs_torque_add_linear_le`,
    `SimplePendulum.gradLagrangian_sub_toHarmonicOscillator`
-15. Physlib/ClassicalMechanics/Pendulum/SimplePendulum/PeriodFormula.lean — `SimplePendulum.periodFormula`,
+17. Physlib/ClassicalMechanics/Pendulum/SimplePendulum/PeriodFormula.lean — `SimplePendulum.periodFormula`,
    `SimplePendulum.periodFormula_neg`, `SimplePendulum.periodFormula_zero`,
    `SimplePendulum.continuousOn_periodFormula`,
    `SimplePendulum.continuousAt_periodFormula_zero`,
